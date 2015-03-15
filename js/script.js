@@ -18,8 +18,8 @@ $(document).ready(function () {
     var indexPrevios;
 
     //
-    var rows = 10;
-    var columns = 20;
+    var rows = 15;
+    var columns = 15;
 
     for (var i = 0; i < rows; i++) {
         $('.grid-container').append('<div class="grid-row"></div>');
@@ -63,6 +63,7 @@ $(document).ready(function () {
                 }
                 else $(this).append($i).addClass('number').fadeTo("fast", 1).addClass('last');
 
+                if($i > 99) $(this).css({'font-size': '14px'});
 
                 xPrevios = x;
                 yPrevios = y;
