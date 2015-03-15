@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     //
     var rows = 10;
-    var columns = 5;
+    var columns = 10;
 
     function remove_grid() {
         $('.grid-row').remove();
