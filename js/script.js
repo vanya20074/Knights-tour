@@ -13,8 +13,8 @@ $(document).ready(function () {
     var firstStepFlag = 1;
     var indexPrevios;
 
-    var rows = 13;
-    var columns = 11;
+    var rows = 10;
+    var columns = 10;
 
     for (var i = 0; i < rows; i++) {
         $('.grid-container').append('<div class="grid-row"></div>');
