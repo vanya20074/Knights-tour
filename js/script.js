@@ -18,24 +18,33 @@ $(document).ready(function () {
     var indexPrevios;
 
     //
-    var rows = 15;
-    var columns = 15;
+    var rows = 10;
+    var columns = 5;
 
-    for (var i = 0; i < rows; i++) {
-        $('.grid-container').append('<div class="grid-row"></div>');
+    function remove_grid() {
+        $('.grid-row').remove();
+        $('.grid-cell').remove();
     }
 
-
-    $('.grid-row').each(function () {
-        for (i = 0; i < columns; i++) {
-            $(this).append('<div class="grid-cell"></div>')
+    function generage_grid() {
+        for (var i = 0; i < rows; i++) {
+            $('.grid-container').append('<div class="grid-row"></div>');
         }
-    });
 
-    var game_container_height = (34.5 * rows)
-    $('.game-container').height(game_container_height);
-    var game_container_width = (34.5 * columns)
-    $('.game-container').width(game_container_width);
+
+        $('.grid-row').each(function () {
+            for (i = 0; i < columns; i++) {
+                $(this).append('<div class="grid-cell"></div>')
+            }
+        });
+
+        var game_container_height = (34.5 * rows)
+        $('.game-container').height(game_container_height);
+        var game_container_width = (34.5 * columns)
+        $('.game-container').width(game_container_width);
+    }
+
+    generage_grid();
 
     var $cells = $('.grid-cell');
 
@@ -63,7 +72,7 @@ $(document).ready(function () {
                 }
                 else $(this).append($i).addClass('number').fadeTo("fast", 1).addClass('last');
 
-                if($i > 99) $(this).css({'font-size': '14px'});
+                if ($i > 99) $(this).css({'font-size': '14px'});
 
                 xPrevios = x;
                 yPrevios = y;
@@ -75,7 +84,7 @@ $(document).ready(function () {
                 indexPrevios = $index;
 
                 //check step available
-                   if (($('.grid-cell:eq(' + ((x - 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y - 1) || (x - 2) >= rows || (y - 1) >= columns)
+                if (($('.grid-cell:eq(' + ((x - 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y - 1) || (x - 2) >= rows || (y - 1) >= columns)
                     && ($('.grid-cell:eq(' + ((x - 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y + 1) || (x - 2) >= rows || (y + 1) >= columns)
                     && ($('.grid-cell:eq(' + ((x - 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y - 2) || (x - 1) >= rows || (y - 2) >= columns)
                     && ($('.grid-cell:eq(' + ((x - 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y + 2) || (x - 1) >= rows || (y + 2) >= columns)
@@ -97,7 +106,7 @@ $(document).ready(function () {
                 console.log((x + 1) + ' ' + (y + 2) + ' ' + ($('.grid-cell:eq(' + ((x + 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y + 2) || (x + 1) >= rows || (y + 2) >= columns));
                 console.log((x + 1) + ' ' + (y - 2) + ' ' + ($('.grid-cell:eq(' + ((x + 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y - 2) || (x + 1) >= rows || (y - 2) >= columns));
                 console.log($i < ((columns * rows) - 1));
-               // console.log('======================');
+                // console.log('======================');
 
                 if ($i == ((columns * rows) - 1)) getPopUp('game_message_win');
                 $i++;
@@ -111,18 +120,23 @@ $(document).ready(function () {
     });
 
     //field shading
-    $cells.each(function () {
-        if ((columns % 2) == 0) {
-            if ((Math.floor($n / columns) + $n) % 2 == 1) $(this).addClass('black')
-            else $(this).addClass('white');
-            $n++;
-        } else {
-            if (($n % 2) == 1) $(this).addClass('black')
-            else $(this).addClass('white');
-            $n++;
-        }
+    function shading() {
+        var $cells = $('.grid-cell');
+        $cells.each(function () {
+            if ((columns % 2) == 0) {
+                if ((Math.floor($n / columns) + $n) % 2 == 1) $(this).addClass('black')
+                else $(this).addClass('white');
+                $n++;
+            } else {
+                if (($n % 2) == 1) $(this).addClass('black')
+                else $(this).addClass('white');
+                $n++;
+            }
 
-    });
+        });
+    }
+
+    shading();
 
 //    $('.restart-button').click(function () {
 //        location.reload();
@@ -199,6 +213,7 @@ $(document).ready(function () {
         $.getJSON('lang/ru.json', translate);
 
     });
+
 });
 
 
