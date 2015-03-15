@@ -5,14 +5,19 @@
 $(document).ready(function () {
     console.log(navigator.language);
 
+    //cell number
     var $i = 0;
+
     var $n = 0;
 
+    //cell indexes
     var xPrevios;
     var yPrevios;
+
     var firstStepFlag = 1;
     var indexPrevios;
 
+    //
     var rows = 10;
     var columns = 10;
 
