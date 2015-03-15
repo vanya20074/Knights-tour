@@ -19,7 +19,7 @@ $(document).ready(function () {
 
     //
     var rows = 10;
-    var columns = 10;
+    var columns = 20;
 
     for (var i = 0; i < rows; i++) {
         $('.grid-container').append('<div class="grid-row"></div>');
@@ -74,27 +74,27 @@ $(document).ready(function () {
                 indexPrevios = $index;
 
                 //check step available
-                   if (($('.grid-cell:eq(' + ((x - 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y - 1) || (x - 2) > columns || (y - 1) > rows)
-                    && ($('.grid-cell:eq(' + ((x - 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y + 1) || (x - 2) > columns || (y + 1) > rows)
-                    && ($('.grid-cell:eq(' + ((x - 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y - 2) || (x - 1) > columns || (y - 2) > rows)
-                    && ($('.grid-cell:eq(' + ((x - 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y + 2) || (x - 1) > columns || (y + 2) > rows)
-                    && ($('.grid-cell:eq(' + ((x + 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y + 1) || (x + 2) > columns || (y + 1) > rows)
-                    && ($('.grid-cell:eq(' + ((x + 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y - 1) || (x + 2) > columns || (y - 1) > rows)
-                    && ($('.grid-cell:eq(' + ((x + 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y + 2) || (x + 1) > columns || (y + 2) > rows)
-                    && ($('.grid-cell:eq(' + ((x + 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y - 2) || (x + 1) > columns || (y - 2) > rows)
+                   if (($('.grid-cell:eq(' + ((x - 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y - 1) || (x - 2) >= rows || (y - 1) >= columns)
+                    && ($('.grid-cell:eq(' + ((x - 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y + 1) || (x - 2) >= rows || (y + 1) >= columns)
+                    && ($('.grid-cell:eq(' + ((x - 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y - 2) || (x - 1) >= rows || (y - 2) >= columns)
+                    && ($('.grid-cell:eq(' + ((x - 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y + 2) || (x - 1) >= rows || (y + 2) >= columns)
+                    && ($('.grid-cell:eq(' + ((x + 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y + 1) || (x + 2) >= rows || (y + 1) >= columns)
+                    && ($('.grid-cell:eq(' + ((x + 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y - 1) || (x + 2) >= rows || (y - 1) >= columns)
+                    && ($('.grid-cell:eq(' + ((x + 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y + 2) || (x + 1) >= rows || (y + 2) >= columns)
+                    && ($('.grid-cell:eq(' + ((x + 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y - 2) || (x + 1) >= rows || (y - 2) >= columns)
                     && $i < ((columns * rows) - 1)) {
                     console.log('Game over!');
                     getPopUp('game_message_lose');
                 }
                 console.log('========== true  unavailable ============');
-                console.log((x - 2) + ' ' + (y - 1) + ' ' + ($('.grid-cell:eq(' + ((x - 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y - 1) || (x - 2) > columns || (y - 1) > rows));
-                console.log((x - 2) + ' ' + (y + 1) + ' ' + ($('.grid-cell:eq(' + ((x - 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y + 1) || (x - 2) > columns || (y + 1) > rows));
-                console.log((x - 1) + ' ' + (y - 2) + ' ' + ($('.grid-cell:eq(' + ((x - 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y - 2) || (x - 1) > columns || (y - 2) > rows));
-                console.log((x - 1) + ' ' + (y + 2) + ' ' + ($('.grid-cell:eq(' + ((x - 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y + 2) || (x - 1) > columns || (y + 2) > rows));
-                console.log((x + 2) + ' ' + (y + 1) + ' ' + ($('.grid-cell:eq(' + ((x + 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y + 1) || (x + 2) > columns || (y + 1) > rows));
-                console.log((x + 2) + ' ' + (y - 1) + ' ' + ($('.grid-cell:eq(' + ((x + 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y - 1) || (x + 2) > columns || (y - 1) > rows));
-                console.log((x + 1) + ' ' + (y + 2) + ' ' + ($('.grid-cell:eq(' + ((x + 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y + 2) || (x + 1) > columns || (y + 2) > rows));
-                console.log((x + 1) + ' ' + (y - 2) + ' ' + ($('.grid-cell:eq(' + ((x + 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y - 2) || (x + 1) > columns || (y - 2) > rows));
+                console.log((x - 2) + ' ' + (y - 1) + ' ' + ($('.grid-cell:eq(' + ((x - 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y - 1) || (x - 2) >= rows || (y - 1) >= columns));
+                console.log((x - 2) + ' ' + (y + 1) + ' ' + ($('.grid-cell:eq(' + ((x - 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x - 2) || 0 > (y + 1) || (x - 2) >= rows || (y + 1) >= columns));
+                console.log((x - 1) + ' ' + (y - 2) + ' ' + ($('.grid-cell:eq(' + ((x - 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y - 2) || (x - 1) >= rows || (y - 2) >= columns));
+                console.log((x - 1) + ' ' + (y + 2) + ' ' + ($('.grid-cell:eq(' + ((x - 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x - 1) || 0 > (y + 2) || (x - 1) >= rows || (y + 2) >= columns));
+                console.log((x + 2) + ' ' + (y + 1) + ' ' + ($('.grid-cell:eq(' + ((x + 2) * columns + (y + 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y + 1) || (x + 2) >= rows || (y + 1) >= columns));
+                console.log((x + 2) + ' ' + (y - 1) + ' ' + ($('.grid-cell:eq(' + ((x + 2) * columns + (y - 1)) + ' )').hasClass('number') || 0 > (x + 2) || 0 > (y - 1) || (x + 2) >= rows || (y - 1) >= columns));
+                console.log((x + 1) + ' ' + (y + 2) + ' ' + ($('.grid-cell:eq(' + ((x + 1) * columns + (y + 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y + 2) || (x + 1) >= rows || (y + 2) >= columns));
+                console.log((x + 1) + ' ' + (y - 2) + ' ' + ($('.grid-cell:eq(' + ((x + 1) * columns + (y - 2)) + ' )').hasClass('number') || 0 > (x + 1) || 0 > (y - 2) || (x + 1) >= rows || (y - 2) >= columns));
                 console.log($i < ((columns * rows) - 1));
                // console.log('======================');
 
