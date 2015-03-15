@@ -1,0 +1,6 @@
+{
+    "name" : "Knight's tour",
+    "new_game" : "New Game",
+    "how" : "How to play: ",
+    "rules" : "To win you need to get around all the cells of the board, moving as chess knight (\"L\"), stepping on each only once."
+}

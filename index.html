@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style/modal-style.css"/>
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="js/lang.js"></script>
+</head>
+<body>
+
+<div id="trigger">
+
+</div>
+
+<div class="popupbox" id="game_message_lose">
+    <div class="intabdiv">
+        <h2>GAME OVER!</h2>
+        <!--<p>You don't have any squares for move</p>-->
+        <a class="restart-button"><p tkey="new_game"></p></a>
+    </div>
+</div>
+
+<div class="popupbox" id="game_message_win">
+    <div class="intabdiv">
+        <h2>YOU WON!</h2>
+        <!--<p></p>-->
+        <a class="restart-button" ><p tkey="new_game"></p></a>
+    </div>
+</div>
+
+
+
+<div class="container">
+
+    <!-- Single button -->
+    <div class="btn-group dropdown">
+        <button type="button" class="btn btn-default" data-toggle="dropdown" aria-expanded="false" id="lang">
+            Русский <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li><a id="en">English</a></li>
+            <li><a id="ru">Русский</a></li>
+
+
+        </ul>
+    </div>
+    <div class="heading">
+
+        <h1 class="title"><img class="horse" src="img/horse.png"><p  tkey="name"></p><img class="horse inverse" src="img/horse.png"></h1>
+
+          <a class="restart-button"><p tkey="new_game"></p></a>
+
+
+    </div>
+
+
+    <div class="game-container">
+
+
+        <div class="grid-container">
+
+           <!-- <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>
+            <div class="grid-row">
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+                <div class="grid-cell"></div>
+            </div>-->
+        </div>
+
+    </div>
+  <p class="game-explanation">
+        <strong class="important"><b tkey="how"></b></strong> <i tkey="rules"></i>
+    </p>
+    <hr>
+           <p>
+             <strong class="important">Wikipedia:   </strong>
+             <a href="https://en.wikipedia.org/wiki/Knight%27s_tour"> The knight's tour problem</a> is the mathematical problem of finding a knight's tour.
+             Creating a program to find a knight's tour is a common problem given to computer science students.
+             Variations of the knight's tour problem involve chessboards of different sizes than the usual 8 × 8,
+             as well as irregular (non-rectangular) boards.
+         </p>
+         <hr>
+         <p>
+             Created by <a href="mailto: vanya20074@gmail.com" target="_blank">Ivan Shevchenko</a> with using styles from <a href="https://github.com/gabrielecirulli/2048">2048</a> game.
+         </p>
+
+</div>
+
+<div id="fade"></div>
+</body>
+</html>
