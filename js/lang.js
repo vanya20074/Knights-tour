@@ -5,7 +5,7 @@ $.urlParam = function(name){
     else return 0;
 }
 
-var langCode = 'ru';
+var langCode = $.urlParam('language');
 
 var translate = function (jsdata)
 {	
@@ -20,12 +20,10 @@ var translate = function (jsdata)
 
 
 switch (langCode){
-    case 'ru':
+    case 0 || '0':
         $.getJSON('lang/ru.json', translate);
         break;
-    case 'ua':
-        $.getJSON('lang/ua.json', translate);
-        break;
+
     default:
         $.getJSON('lang/en.json', translate);
         break;
