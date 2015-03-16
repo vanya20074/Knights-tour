@@ -257,7 +257,7 @@ $(document).ready(function () {
                 break;
             case 3:
                 init(8, 8);
-                VK.callMethod("resizeWindow", 510, 735);
+                VK.callMethod("resizeWindow", 625, 735);
                 break;
             case 4:
                 init(9, 9);
