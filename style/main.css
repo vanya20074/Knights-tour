@@ -433,6 +433,7 @@ blockquote {
     padding:15px;
     font-size:15px;
     color: #383838;
+    text-align: center;
 }
 
 .current_lvl{
@@ -699,6 +700,9 @@ blockquote {
 }
 
 .game-explanation {
+
+    width: 700px;
+    margin: 0 auto;
     margin-top: 50px;
 }
 
