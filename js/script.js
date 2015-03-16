@@ -269,7 +269,7 @@ $(document).ready(function () {
                 break;
             default:
                 init(5, 5);
-                VK.callMethod("resizeWindow", 625, 500);
+                VK.callMethod("resizeWindow", 625, 600);
         }
     }
 
