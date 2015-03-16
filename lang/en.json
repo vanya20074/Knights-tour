@@ -3,9 +3,9 @@
     "new_game": "New Game",
     "how": "How to play: ",
     "rules": "To win you need to get around all the cells of the board, moving as chess knight (\"L\"), stepping on each only once.",
-    "quote1": "",
-    "quote2": "",
-    "quote3": "",
-    "quote4": "",
-    "quote5": ""
+    "quote1": "\"Chess game - a collaborative effort because it involves the creation of both partners.\" Anatoly Karpov (b. 1951), the twelfth world chess champion.",
+    "quote2": "\"A good player is always lucky.\" Jose Raul Capablanca (b. 1988), the third world chess champion.",
+    "quote3": "\"I think that the secret lies in the innate sharpness of memory that properly develop a thorough knowledge of the chessboard and deep penetration into the essence of the game of chess.\" Alexander Alekhine (b. 1951), the fourth world chess champion.",
+    "quote4": "\"When, in 1990, the computer calculated the option of 76 moves to mate, I do not believe it - but he was right! For a moment I saw God. \" Garry Kasparov (b. 1963), the 13th champion world chess.",
+    "quote5": "\"My first goal was not to win the game, and sacrifice a piece.\" Wilhelm Steinitz (b. 1836), the first official world chess champion"
 }
