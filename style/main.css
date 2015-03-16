@@ -84,6 +84,7 @@ p {
     margin-bottom: 10px;
     line-height: 1.65;
     display: inline-block;
+    text-align: center;
 }
 
 i {
@@ -425,6 +426,14 @@ img.inverse {
     background: rgba(147, 141, 135, 0.23);
 }
 
+blockquote {
+    border:solid #999;
+    border-width:3px 0;
+    margin:10px 40px;
+    padding:15px;
+    font-size:15px;
+    color: #383838;
+}
 
 .current_lvl{
     background: #9da4ff;

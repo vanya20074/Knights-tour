@@ -250,26 +250,62 @@ $(document).ready(function () {
             case 1:
                 init(6, 6);
                 VK.callMethod("resizeWindow", 625, 630);
+                $('blockquote').remove();
+                $('.game-explanation').fadeOut(900, function() {
+                $('.game-explanation').append('<blockquote><p tkey="quote1"></p><p tkey="quote1author"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+                });
                 break;
             case 2:
                 init(7, 7);
                 VK.callMethod("resizeWindow", 625, 675);
+                $('blockquote').remove();
+                $('.game-explanation').fadeOut(900, function() {
+                    $('.game-explanation').append('<blockquote><p tkey="quote2"></p><p tkey="quote1author"></p> </blockquote>');
+                    select_ln();
+                    $('.game-explanation').fadeIn(900);
+                });
                 break;
             case 3:
                 init(8, 8);
                 VK.callMethod("resizeWindow", 625, 720);
+                $('blockquote').remove();
+                $('.game-explanation').fadeOut(900, function() {
+                $('.game-explanation').append('<blockquote><p tkey="quote3"></p><p tkey="quote1author"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+                });
                 break;
             case 4:
                 init(9, 9);
                 VK.callMethod("resizeWindow", 625, 765);
+                $('blockquote').remove();
+                $('.game-explanation').fadeOut(900, function() {
+                $('.game-explanation').append('<blockquote><p tkey="quote4"></p><p tkey="quote1author"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+                });
                 break;
             case 5:
                 init(10, 10);
                 VK.callMethod("resizeWindow", 625, 810);
+                $('blockquote').remove();
+                $('.game-explanation').fadeOut(900, function() {
+                $('.game-explanation').append('<blockquote><p tkey="quote5"></p><p tkey="quote1author"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+                });
                 break;
             default:
                 init(5, 5);
                 VK.callMethod("resizeWindow", 625, 600);
+                $('blockquote').remove();
+                $('.game-explanation').fadeOut(900, function() {
+                $('.game-explanation').append(' <blockquote><p tkey="how"></p><p tkey="rules"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+                });
         }
     }
 
