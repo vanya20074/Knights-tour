@@ -249,23 +249,23 @@ $(document).ready(function () {
         switch (level) {
             case 1:
                 init(6, 6);
-                VK.callMethod("resizeWindow", 625, 645);
+                VK.callMethod("resizeWindow", 625, 630);
                 break;
             case 2:
                 init(7, 7);
-                VK.callMethod("resizeWindow", 625, 690);
+                VK.callMethod("resizeWindow", 625, 675);
                 break;
             case 3:
                 init(8, 8);
-                VK.callMethod("resizeWindow", 625, 735);
+                VK.callMethod("resizeWindow", 625, 720);
                 break;
             case 4:
                 init(9, 9);
-                VK.callMethod("resizeWindow", 625, 780);
+                VK.callMethod("resizeWindow", 625, 765);
                 break;
             case 5:
                 init(10, 10);
-                VK.callMethod("resizeWindow", 625, 825);
+                VK.callMethod("resizeWindow", 625, 810);
                 break;
             default:
                 init(5, 5);
