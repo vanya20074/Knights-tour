@@ -4,9 +4,14 @@
 
 
 $(document).ready(function () {
+    console.log($.md5($.urlParam('user_id') + 1));
+    if ($.cookie('state') == null)  setCoockie(0);
+
     function init(rows, columns) {
         console.log(navigator.language);
-        //remove_grid();
+
+        var current_level = getCurrent_level();
+
         var $i = 0;
 
         //cell indexes
@@ -113,7 +118,13 @@ $(document).ready(function () {
                     console.log($i < ((columns * rows) - 1));
                     // console.log('======================');
 
-                    if ($i == ((columns * rows) - 1)) getPopUp('game_message_win');
+
+                    if ($i == ((columns * rows) - 1)) {
+                        getPopUp('game_message_win');
+                        current_level = getCurrent_level();
+                        current_level++;
+                        setCoockie(current_level);
+                    }
                     $i++;
                 }
             } else {
@@ -196,7 +207,8 @@ $(document).ready(function () {
      * Restart game with new grid that set in init()
      */
     $('.restart-button').click(function () {
-        init(10, 10);
+
+        init_level();
         var $cells = $('.grid-cell');
         $cells.each(function () {
             $(this).fadeOut(900, function () {
@@ -213,8 +225,38 @@ $(document).ready(function () {
         });
         $('#fade , #game_message_win, #game_message_lose').fadeOut(900);
 
+
     });
-    init(15, 10);
+
+    function setCoockie(level) {
+        var value = $.urlParam('user_id') + level;
+        var md5 = $.md5(value);
+        $.cookie('state', md5);
+    }
+
+    function init_level() {
+        var level = getCurrent_level();
+        console.log(level);
+        console.log($.md5($.urlParam('user_id') + 1));
+        switch (level) {
+            case 1:
+                init(5, 5);
+                break;
+            case 2:
+                init(6, 6);
+                break;
+            case 3:
+                init(7, 7);
+                break;
+            case 4:
+                init(8, 8);
+                break;
+            default:
+                init(4, 4);
+        }
+    }
+
+    init_level();
 });
 
 
