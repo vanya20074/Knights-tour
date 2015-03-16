@@ -5,7 +5,10 @@
 
 $(document).ready(function () {
 
-    if ($.cookie($.urlParam('user_id')) == null)  setCoockie(0);
+    if (($.cookie($.urlParam('user_id').toString())) == null) {
+        console.log('null')
+        setCoockie(0);
+    }
 
     function init(rows, columns) {
         console.log(navigator.language);
