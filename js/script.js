@@ -4,7 +4,7 @@
 
 
 $(document).ready(function () {
-    console.log($.md5($.urlParam('user_id') + 1));
+
     if ($.cookie('state') == null)  setCoockie(0);
 
     function init(rows, columns) {
@@ -236,8 +236,6 @@ $(document).ready(function () {
 
     function init_level() {
         var level = getCurrent_level();
-        console.log(level);
-        console.log($.md5($.urlParam('user_id') + 1));
         switch (level) {
             case 1:
                 init(6, 6);
@@ -250,6 +248,9 @@ $(document).ready(function () {
                 break;
             case 4:
                 init(9, 9);
+                break;
+            case 5:
+                init(10, 10);
                 break;
             default:
                 init(5, 5);

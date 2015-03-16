@@ -15,6 +15,9 @@ function getCurrent_level(){
         case $.md5($.urlParam('user_id') + 4):
             return 4;
             break;
+        case $.md5($.urlParam('user_id') + 5):
+            return 5;
+            break;
         default :
             return 0;
     }
