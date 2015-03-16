@@ -1,11 +1,12 @@
 /**
  * Created by vanya on 07.03.15.
  */
-function init(rows, columns) {
 
-    $(document).ready(function () {
+
+$(document).ready(function () {
+    function init(rows, columns) {
         console.log(navigator.language);
-        remove_grid();
+        //remove_grid();
         var $i = 0;
 
         //cell indexes
@@ -27,6 +28,7 @@ function init(rows, columns) {
          * Generate grid with parameters from init(rows, columns)
          */
         function generage_grid() {
+
             for (var i = 0; i < rows; i++) {
                 $('.grid-container').append('<div class="grid-row"></div>');
             }
@@ -44,6 +46,7 @@ function init(rows, columns) {
             $('.game-container').width(game_container_width);
         }
 
+        remove_grid();
         generage_grid();
 
 
@@ -143,28 +146,7 @@ function init(rows, columns) {
 
         shading();
 
-        /**
-         * Restart game with new grid that set in init()
-         */
-        $('.restart-button').click(function () {
-            init(10, 10);
-            var $cells = $('.grid-cell');
-            $cells.each(function () {
-                $(this).fadeOut(900, function () {
-                    $cells.each(function () {
-                        $(this).empty().removeClass('first last intermediate number');
-                        $(this).stop().fadeIn(900);
-                    });
-                })
 
-                $i = 0;
-
-                firstStepFlag = 1;
-
-            });
-            $('#fade , #game_message_win, #game_message_lose').fadeOut(900);
-
-        });
         /**
          * Generate popup window after win or lose
          *
@@ -208,11 +190,34 @@ function init(rows, columns) {
             $.getJSON('lang/ru.json', translate);
 
         });
+    }
 
+    /**
+     * Restart game with new grid that set in init()
+     */
+    $('.restart-button').click(function () {
+        init(10, 10);
+        var $cells = $('.grid-cell');
+        $cells.each(function () {
+            $(this).fadeOut(900, function () {
+                $cells.each(function () {
+                    $(this).empty().removeClass('first last intermediate number');
+                    $(this).stop().fadeIn(900);
+                });
+            })
+
+            $i = 0;
+
+            firstStepFlag = 1;
+
+        });
+        $('#fade , #game_message_win, #game_message_lose').fadeOut(900);
 
     });
-}
-init(15, 10);
+    init(15, 10);
+});
+
+
 
 
 
