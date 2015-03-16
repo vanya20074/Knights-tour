@@ -2,7 +2,7 @@
 
 * {
     -webkit-box-sizing: inherit;
--moz-box-sizing: inherit;
+    -moz-box-sizing: inherit;
     box-sizing: inherit;
 }
 
@@ -10,22 +10,24 @@ a.restart-button:hover {
     color: #fff; /* Цвет ссылки при наведении на нее курсора мыши */
 }
 
-.btn-group{
+.btn-group {
     position: fixed; /* Фиксированное положение */
-    left: 0; bottom: 1; /* Левый нижний угол */
+    left: 0;
+    bottom: 1; /* Левый нижний угол */
     /*width: 100%; *//* Ширина слоя */
 
 }
 
-hr{
+hr {
     border-top: 3px solid #e0dad3;
     margin-top: 0px;
 }
 
-.new-game-div{
+.new-game-div {
     display: -webkit-inline-box;
 
 }
+
 html, body {
     margin: 0;
     padding: 0;
@@ -84,7 +86,7 @@ p {
     display: inline-block;
 }
 
-i{
+i {
     font-style: normal;
 }
 
@@ -258,6 +260,31 @@ img.inverse {
     box-sizing: border-box;
 }
 
+.level-container {
+    margin-top: 40px;
+    position: relative;
+    top: 15px;
+    margin: auto;
+
+    padding: 15px;
+    cursor: default;
+    -webkit-touch-callout: none;
+    -ms-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -ms-touch-action: none;
+    touch-action: none;
+    /*background: #fff180;*/
+    border-radius: 6px;
+    width: 234px;
+    height: 60px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
 .game-container .game-message {
     display: none;
     position: absolute;
@@ -310,7 +337,16 @@ img.inverse {
     z-index: 1;
 }
 
+.level-grid-container {
+    position: absolute;
+    z-index: 1;
+}
+
 .grid-row {
+    margin-bottom: 5px;
+}
+
+.level-row {
     margin-bottom: 5px;
 }
 
@@ -332,6 +368,14 @@ img.inverse {
     border-radius: 3px;
 }
 
+.level-cell {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    float: left;
+    border-radius: 3px;
+}
+
 /*background: rgba(238, 228, 218, 0.35);*/
 .black {
     background: rgba(51, 51, 49, 0.54);
@@ -340,6 +384,7 @@ img.inverse {
 .white {
     background: rgba(238, 228, 218, 0.23);
 }
+
 
 .first {
     background: #BBFF15;
@@ -370,6 +415,20 @@ img.inverse {
     opacity: 0.0;
 }
 
+.level {
+    border-radius: 3px;
+    /*background: #eedc1d;*/
+    text-align: center;
+    font-weight: bold;
+    z-index: 10;
+    font-size: 19px;
+    background: rgba(147, 141, 135, 0.23);
+}
+
+
+.current_lvl{
+    background: #9da4ff;
+}
 .grid-cell:last-child {
     margin-right: 0;
 }
@@ -581,11 +640,16 @@ img.inverse {
 
         .game-container .game-message.game-won {
             background: rgba(237, 194, 46, 0.5);
-            color: #f9f6f2; }
+            color: #f9f6f2;
+        }
+
         .game-container .game-message.game-won a.keep-playing-button {
-            display: inline-block; }
+            display: inline-block;
+        }
+
         .game-container .game-message.game-won, .game-container .game-message.game-over {
-            display: block; }
+            display: block;
+        }
 
         .grid-container {
             position: absolute;

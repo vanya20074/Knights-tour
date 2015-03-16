@@ -4,6 +4,11 @@
 
 
 $(document).ready(function () {
+    VK.init(function() {
+       console.log('success vk init')
+    }, function() {
+        console.log('failed vk init')
+    }, '5.29');
 
     if (($.cookie($.urlParam('user_id').toString())) == null) {
         console.log('null')
@@ -15,6 +20,8 @@ $(document).ready(function () {
 
         var current_level = getCurrent_level();
 
+        $('.level-cell').removeClass('current_lvl');
+        $('.level-cell:eq(' + current_level + ')').addClass('current_lvl');
         var $i = 0;
 
         //cell indexes
@@ -242,21 +249,27 @@ $(document).ready(function () {
         switch (level) {
             case 1:
                 init(6, 6);
+                VK.callMethod("resizeWindow", 625, 645);
                 break;
             case 2:
                 init(7, 7);
+                VK.callMethod("resizeWindow", 625, 690);
                 break;
             case 3:
                 init(8, 8);
+                VK.callMethod("resizeWindow", 510, 735);
                 break;
             case 4:
                 init(9, 9);
+                VK.callMethod("resizeWindow", 625, 780);
                 break;
             case 5:
                 init(10, 10);
+                VK.callMethod("resizeWindow", 625, 825);
                 break;
             default:
                 init(5, 5);
+                VK.callMethod("resizeWindow", 625, 500);
         }
     }
 
