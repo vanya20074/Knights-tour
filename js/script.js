@@ -4,8 +4,8 @@
 
 
 $(document).ready(function () {
-    console.log($.md5($.urlParam('user_id') + 1));
-    if ($.cookie('state') == null)  setCoockie(0);
+
+    if ($.cookie($.urlParam('user_id')) == null)  setCoockie(0);
 
     function init(rows, columns) {
         console.log(navigator.language);
@@ -231,13 +231,11 @@ $(document).ready(function () {
     function setCoockie(level) {
         var value = $.urlParam('user_id') + level;
         var md5 = $.md5(value);
-        $.cookie('state', md5);
+        $.cookie($.urlParam('user_id'), md5);
     }
 
     function init_level() {
         var level = getCurrent_level();
-        console.log(level);
-        console.log($.md5($.urlParam('user_id') + 1));
         switch (level) {
             case 1:
                 init(6, 6);
@@ -250,6 +248,9 @@ $(document).ready(function () {
                 break;
             case 4:
                 init(9, 9);
+                break;
+            case 5:
+                init(10, 10);
                 break;
             default:
                 init(5, 5);

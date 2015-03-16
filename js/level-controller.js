@@ -2,7 +2,7 @@
  * Created by vanya on 16.03.15.
  */
 function getCurrent_level(){
-    switch ($.cookie('state')){
+    switch ($.cookie($.urlParam('user_id'))){
         case $.md5($.urlParam('user_id') + 1):
             return 1;
             break;
@@ -14,6 +14,9 @@ function getCurrent_level(){
             break;
         case $.md5($.urlParam('user_id') + 4):
             return 4;
+            break;
+        case $.md5($.urlParam('user_id') + 5):
+            return 5;
             break;
         default :
             return 0;
