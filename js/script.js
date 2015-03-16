@@ -240,19 +240,19 @@ $(document).ready(function () {
         console.log($.md5($.urlParam('user_id') + 1));
         switch (level) {
             case 1:
-                init(5, 5);
-                break;
-            case 2:
                 init(6, 6);
                 break;
-            case 3:
+            case 2:
                 init(7, 7);
                 break;
-            case 4:
+            case 3:
                 init(8, 8);
                 break;
+            case 4:
+                init(9, 9);
+                break;
             default:
-                init(4, 4);
+                init(5, 5);
         }
     }
 
