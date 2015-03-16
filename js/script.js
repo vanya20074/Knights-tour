@@ -5,7 +5,7 @@
 
 $(document).ready(function () {
 
-    if ($.cookie('state') == null)  setCoockie(0);
+    if ($.cookie($.urlParam('user_id')) == null)  setCoockie(0);
 
     function init(rows, columns) {
         console.log(navigator.language);
@@ -231,7 +231,7 @@ $(document).ready(function () {
     function setCoockie(level) {
         var value = $.urlParam('user_id') + level;
         var md5 = $.md5(value);
-        $.cookie('state', md5);
+        $.cookie($.urlParam('user_id'), md5);
     }
 
     function init_level() {
