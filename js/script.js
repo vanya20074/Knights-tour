@@ -259,6 +259,7 @@ $(document).ready(function () {
                 break;
             case 2:
                 init(7, 7);
+                VK.callMethod("resizeWindow", 625, 675);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
                     $('.game-explanation').append('<blockquote><p tkey="quote2"></p><p tkey="quote1author"></p> </blockquote>');
