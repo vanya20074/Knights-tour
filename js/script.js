@@ -19,8 +19,12 @@ $(document).ready(function () {
     }
 
     $('.level-cell').each(function () {
-        if ($(this).index() > $.cookie($.urlParam('user_id')+'')) $(this).addClass('lock');
+        if ($(this).index() > $.cookie($.urlParam('user_id').toString())) $(this).addClass('lock');
     })
+
+//    $('level-cell').removeClass('current_lvl');
+//    $('level-cell:eq(' + $.cookie($.urlParam('user_id'))+ ')').addClass('current_lvl');
+
     function init(rows, columns) {
 
         console.log(navigator.language);
@@ -358,7 +362,7 @@ function init_next_level(level) {
 var level = $.cookie($.urlParam('user_id'));
 init_next_level(level);
 // $('.level-cell').removeClass('current_lvl');
-$('.level-cell:eq(' + level + ')').addClass('current_lvl');
+//$('.level-cell:eq(' + level + ')').addClass('current_lvl');
 
 $('.level-cell').click(function () {
     if (!$(this).hasClass('lock')) {
