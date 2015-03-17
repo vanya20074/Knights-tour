@@ -150,6 +150,8 @@ $(document).ready(function () {
 
         });
 
+
+
         /**
          * Field shading function, add black and white class to cell
          */
@@ -234,7 +236,8 @@ $(document).ready(function () {
     });
 
     $('.next-level-button').click(function () {
-        init_level();
+        var level = getCurrent_level();
+        init_next_level(level);
         clear_grid();
     });
     function clear_grid() {
@@ -256,8 +259,11 @@ $(document).ready(function () {
         $.cookie($.urlParam('user_id'), md5);
     }
 
-    function init_level() {
-        var level = getCurrent_level();
+    /**
+     * Init new level with next quote and board
+     */
+    function init_next_level(level) {
+
         switch (level) {
             case 1:
                 init(6, 6);
@@ -320,8 +326,13 @@ $(document).ready(function () {
                 });
         }
     }
+    var level = getCurrent_level();
+    init_next_level(level);
 
-    init_level();
+    $('.level-cell').click(function(){
+        var level = $(this).index();
+        init_next_level(level);
+    });
 });
 
 
