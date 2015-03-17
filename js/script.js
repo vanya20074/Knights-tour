@@ -18,7 +18,8 @@ $(document).ready(function () {
     }
 
     $('.level-cell').each(function () {
-        if ($(this).index() > $.cookie($.urlParam('user_id').toString())) $(this).addClass('lock');
+         $(this).addClass('lock');
+         if ($(this).index() <= $.cookie($.urlParam('user_id')).toString()) $(this).removeClass('lock');
     })
 
 //    $('level-cell').removeClass('current_lvl');
@@ -358,7 +359,7 @@ function init_next_level(level) {
 }
 
 //var level = getCurrent_level();
-var level = $.cookie($.urlParam('user_id'));
+var level = $.cookie('select');
 init_next_level(level);
 // $('.level-cell').removeClass('current_lvl');
 //$('.level-cell:eq(' + level + ')').addClass('current_lvl');
