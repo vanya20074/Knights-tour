@@ -724,3 +724,8 @@ blockquote {
     margin-top: 50px;
 }
 
+.lock{
+    color: rgba(56, 56, 56, 0.27);
+    background-image: url("../img/lock.png");
+    background-size: cover;
+}

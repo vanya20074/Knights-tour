@@ -12,15 +12,21 @@ $(document).ready(function () {
 
     if (($.cookie($.urlParam('user_id').toString())) == null) {
         console.log('null')
-        setCoockie(0);
+        $.cookie($.urlParam('user_id'), '0');
+        $.cookie('select', '0');
+
     }
 
+    $('.level-cell').each(function () {
+        if ($(this).index() > $.cookie($.urlParam('user_id')+'')) $(this).addClass('lock');
+    })
     function init(rows, columns) {
+
         console.log(navigator.language);
 
-        var current_level = getCurrent_level();
+        var current_level = $.cookie('select');
 
-        $('.level-cell').removeClass('current_lvl');
+        //  $('.level-cell').removeClass('current_lvl');
         $('.level-cell:eq(' + current_level + ')').addClass('current_lvl');
         var $i = 0;
 
@@ -131,209 +137,239 @@ $(document).ready(function () {
 
                     if ($i == ((columns * rows) - 1)) {
 
-                        current_level = getCurrent_level();
+                        current_level = $.cookie('select');
                         if (current_level == '5') {
                             getPopUp('game_message_win');
                         }
-                        else
+                        else {
                             getPopUp('game_message_next_level');
-                        current_level++;
-                        setCoockie(current_level);
-                    }
-                    $i++;
-                }
-            } else {
+                            //console.log(current_level + ' ' + getCurrent_level());
 
-                console.log('Already set number.');
+                            current_level++;
+                            $.cookie($.urlParam('user_id'), current_level);
+                            $.cookie('select', current_level);
+                            console.log(current_level + ' ----')
+                            $('.level-cell:eq(' + current_level + ')').removeClass('lock');
+                            console.log('2')
+                            $('.level-cell').removeClass('current_lvl');
+                            $('.level-cell:eq(' + current_level + ')').addClass('current_lvl');
+                           // init_next_level(current_level);
+                        }
+                    }
+
+                $i++;
+                }
             }
 
+    else
+        {
 
-        });
-
-
-
-        /**
-         * Field shading function, add black and white class to cell
-         */
-        function shading() {
-            var $cells = $('.grid-cell');
-            $cells.each(function () {
-                if ((columns % 2) == 0) {
-                    if ((Math.floor($i / columns) + $i) % 2 == 1) $(this).addClass('black')
-                    else $(this).addClass('white');
-                    $i++;
-                } else {
-                    if (($i % 2) == 1) $(this).addClass('black')
-                    else $(this).addClass('white');
-                    $i++;
-                }
-
-            });
-            $i = 0;
-        }
-
-        shading();
-
-
-        /**
-         * Generate popup window after win or lose
-         *
-         * @param message_id get game_message_win or game_message_lose
-         */
-        function getPopUp(message_id) {
-
-            var popupid = message_id;
-            console.log(popupid);
-
-            $('#' + popupid).fadeIn(900);
-
-            $('#fade').css({'filter': 'alpha(opacity=80)'}).fadeIn(900);
-
-            var popuptopmargin = ($('#' + popupid).height() + 10) / 2;
-            var popupleftmargin = ($('#' + popupid).width() + 10) / 2;
-
-            $('#' + popupid).css({
-                'margin-top': -popuptopmargin,
-                'margin-left': -popupleftmargin
-            });
-
-            $('#fade').click(function () {
-                $('#fade , #game_message_win, #game_message_losem, #game_message_next_level').fadeOut(900)
-                return false;
-            });
+            console.log('Already set number.');
         }
 
 
     }
 
+    )
+    ;
+
+
     /**
-     * Restart game with new grid that set in init()
+     * Field shading function, add black and white class to cell
      */
-    $('.restart-button').click(function () {
-        var level = getCurrent_level();
-        switch (level) {
-            case 1:
-                init(6, 6);
-                break;
-            case 2:
-                init(7, 7);
-                break;
-            case 3:
-                init(8, 8);
-
-                break;
-            case 4:
-                init(9, 9);
-                break;
-            case 5:
-                init(10, 10);
-                break;
-            default:
-                init(5, 5);
-        }
-        clear_grid();
-
-    });
-
-    $('.next-level-button').click(function () {
-        var level = getCurrent_level();
-        init_next_level(level);
-        clear_grid();
-    });
-    function clear_grid() {
+    function shading() {
         var $cells = $('.grid-cell');
         $cells.each(function () {
-            $(this).fadeOut(900, function () {
-                $cells.each(function () {
-                    $(this).empty().removeClass('first last intermediate number');
-                    $(this).stop().fadeIn(900);
-                });
-            })
+            if ((columns % 2) == 0) {
+                if ((Math.floor($i / columns) + $i) % 2 == 1) $(this).addClass('black')
+                else $(this).addClass('white');
+                $i++;
+            } else {
+                if (($i % 2) == 1) $(this).addClass('black')
+                else $(this).addClass('white');
+                $i++;
+            }
+
         });
-        $('#fade , #game_message_win, #game_message_lose, #game_message_next_level').fadeOut(900);
+        $i = 0;
     }
 
-    function setCoockie(level) {
-        var value = $.urlParam('user_id') + level;
-        var md5 = $.md5(value);
-        $.cookie($.urlParam('user_id'), md5);
-    }
+    shading();
+
 
     /**
-     * Init new level with next quote and board
+     * Generate popup window after win or lose
+     *
+     * @param message_id get game_message_win or game_message_lose
      */
-    function init_next_level(level) {
+    function getPopUp(message_id) {
 
-        switch (level) {
-            case 1:
-                init(6, 6);
-                VK.callMethod("resizeWindow", 625, 630);
-                $('.game-explanation').fadeOut(900, function () {
-                    $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote1"></p> </blockquote>');
-                    select_ln();
-                    $('.game-explanation').fadeIn(900);
-                });
-                break;
-            case 2:
-                init(7, 7);
-                VK.callMethod("resizeWindow", 625, 675);
-                $('.game-explanation').fadeOut(900, function () {
-                    $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote2"></p> </blockquote>');
-                    select_ln();
-                    $('.game-explanation').fadeIn(900);
-                });
-                break;
-            case 3:
-                init(8, 8);
-                VK.callMethod("resizeWindow", 625, 750);
-                $('.game-explanation').fadeOut(900, function () {
-                    $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote3"></p> </blockquote>');
-                    select_ln();
-                    $('.game-explanation').fadeIn(900);
-                });
-                break;
-            case 4:
-                init(9, 9);
-                VK.callMethod("resizeWindow", 625, 765);
-                $('.game-explanation').fadeOut(900, function () {
-                    $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote4"></p> </blockquote>');
-                    select_ln();
-                    $('.game-explanation').fadeIn(900);
-                });
-                break;
-            case 5:
-                init(10, 10);
-                VK.callMethod("resizeWindow", 625, 810);
-                $('.game-explanation').fadeOut(900, function () {
-                    $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote5"></p> </blockquote>');
-                    select_ln();
-                    $('.game-explanation').fadeIn(900);
-                });
-                break;
-            default:
-                init(5, 5);
-                VK.callMethod("resizeWindow", 625, 600);
-                $('.game-explanation').fadeOut(900, function () {
-                    $('blockquote').remove();
-                    $('.game-explanation').append(' <blockquote><p tkey="how"></p><p tkey="rules"></p></blockquote>');
-                    select_ln();
-                    $('.game-explanation').fadeIn(900);
-                });
-        }
+        var popupid = message_id;
+        console.log(popupid);
+
+        $('#' + popupid).fadeIn(900);
+
+        $('#fade').css({'filter': 'alpha(opacity=80)'}).fadeIn(900);
+
+        var popuptopmargin = ($('#' + popupid).height() + 10) / 2;
+        var popupleftmargin = ($('#' + popupid).width() + 10) / 2;
+
+        $('#' + popupid).css({
+            'margin-top': -popuptopmargin,
+            'margin-left': -popupleftmargin
+        });
+
+        $('#fade').click(function () {
+            $('#fade , #game_message_win, #game_message_losem, #game_message_next_level').fadeOut(900)
+            return false;
+        });
     }
-    var level = getCurrent_level();
-    init_next_level(level);
 
-    $('.level-cell').click(function(){
-        var level = $(this).index();
-        init_next_level(level);
-    });
+
+}
+
+/**
+ * Restart game with new grid that set in init()
+ */
+$('.restart-button').click(function () {
+    var level = $.cookie('select');
+    console.log(level);
+    switch (level) {
+        case '1':
+            init(6, 6);
+            break;
+        case '2':
+            init(7, 7);
+            break;
+        case '3':
+            init(8, 8);
+            break;
+        case '4':
+            init(9, 9);
+            break;
+        case '5':
+            init(10, 10);
+            break;
+        default:
+            init(5, 5);
+    }
+    clear_grid();
+
 });
+
+$('.next-level-button').click(function () {
+    //var level = getCurrent_level();
+
+    var level = $.cookie('select').toString();
+    init_next_level(level);
+    clear_grid();
+    //  $('.level-cell').removeClass('current_lvl');
+    $('.level-cell:eq(' + level + ')').addClass('current_lvl');
+});
+function clear_grid() {
+    var $cells = $('.grid-cell');
+    $cells.each(function () {
+        $(this).fadeOut(900, function () {
+            $cells.each(function () {
+                $(this).empty().removeClass('first last intermediate number');
+                $(this).stop().fadeIn(900);
+            });
+        })
+    });
+    $('#fade , #game_message_win, #game_message_lose, #game_message_next_level').fadeOut(900);
+}
+
+function setCoockie(level) {
+    //    var value = $.urlParam('user_id') + level;
+    //   var md5 = $.md5(value);
+    $.cookie($.urlParam('user_id'), level);
+}
+
+/**
+ * Init new level with next quote and board
+ */
+function init_next_level(level) {
+
+    switch (level) {
+        case '1':
+            init(6, 6);
+            VK.callMethod("resizeWindow", 625, 630);
+            $('.game-explanation').fadeOut(900, function () {
+                $('blockquote').remove();
+                $('.game-explanation').append('<blockquote><p tkey="quote1"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+            });
+            break;
+        case '2':
+            init(7, 7);
+            VK.callMethod("resizeWindow", 625, 675);
+            $('.game-explanation').fadeOut(900, function () {
+                $('blockquote').remove();
+                $('.game-explanation').append('<blockquote><p tkey="quote2"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+            });
+            break;
+        case '3':
+            init(8, 8);
+            VK.callMethod("resizeWindow", 625, 750);
+            $('.game-explanation').fadeOut(900, function () {
+                $('blockquote').remove();
+                $('.game-explanation').append('<blockquote><p tkey="quote3"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+            });
+            break;
+        case '4':
+            init(9, 9);
+            VK.callMethod("resizeWindow", 625, 765);
+            $('.game-explanation').fadeOut(900, function () {
+                $('blockquote').remove();
+                $('.game-explanation').append('<blockquote><p tkey="quote4"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+            });
+            break;
+        case '5':
+            init(10, 10);
+            VK.callMethod("resizeWindow", 625, 810);
+            $('.game-explanation').fadeOut(900, function () {
+                $('blockquote').remove();
+                $('.game-explanation').append('<blockquote><p tkey="quote5"></p> </blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+            });
+            break;
+        default:
+            init(5, 5);
+            VK.callMethod("resizeWindow", 625, 600);
+            $('.game-explanation').fadeOut(900, function () {
+                $('blockquote').remove();
+                $('.game-explanation').append(' <blockquote><p tkey="how"></p><p tkey="rules"></p></blockquote>');
+                select_ln();
+                $('.game-explanation').fadeIn(900);
+            });
+    }
+}
+
+//var level = getCurrent_level();
+var level = $.cookie($.urlParam('user_id'));
+init_next_level(level);
+// $('.level-cell').removeClass('current_lvl');
+$('.level-cell:eq(' + level + ')').addClass('current_lvl');
+
+$('.level-cell').click(function () {
+    if (!$(this).hasClass('lock')) {
+        var level = $(this).index();
+        init_next_level(level.toString());
+        $.cookie('select', level);
+        $('.level-cell').removeClass('current_lvl');
+        $('.level-cell:eq(' + level + ')').addClass('current_lvl');
+    }
+});
+})
+;
 
 
 
