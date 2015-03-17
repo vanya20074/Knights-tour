@@ -1,6 +1,7 @@
 {
     "name": "Knight's tour",
     "new_game": "New Game",
+    "next_level" : "Next level",
     "how": "How to play: ",
     "rules": "To win you need to get around all the cells of the board, moving as chess knight (\"L\"), stepping on each only once.",
     "quote1": "\"Chess game - a collaborative effort because it involves the creation of both partners.\" Anatoly Karpov (b. 1951), the twelfth world chess champion.",

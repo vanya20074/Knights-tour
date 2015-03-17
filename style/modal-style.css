@@ -38,6 +38,12 @@
 	font-family:Verdana, Geneva, sans-serif;
     text-align: center;
 }
+.intabdiv  h3 {
+    font-size:40px;
+    color:#fff;
+    font-family:Verdana, Geneva, sans-serif;
+    text-align: center;
+}
 .intabdiv p {
 	/*font-size:12px;*/
 	color:#fff;

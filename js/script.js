@@ -130,8 +130,13 @@ $(document).ready(function () {
 
 
                     if ($i == ((columns * rows) - 1)) {
-                        getPopUp('game_message_win');
+
                         current_level = getCurrent_level();
+                        if (current_level == '5') {
+                            getPopUp('game_message_win');
+                        }
+                        else
+                            getPopUp('game_message_next_level');
                         current_level++;
                         setCoockie(current_level);
                     }
@@ -191,34 +196,48 @@ $(document).ready(function () {
             });
 
             $('#fade').click(function () {
-                $('#fade , #game_message_win, #game_message_lose').fadeOut(900)
+                $('#fade , #game_message_win, #game_message_losem, #game_message_next_level').fadeOut(900)
                 return false;
             });
         }
 
-        /**
-         * Language select
-         */
-        $('#en').click(function () {
-            console.log('change to en');
-            $('#lang').text('English');
-            $.getJSON('lang/en.json', translate);
-        });
 
-        $('#ru').click(function () {
-            console.log('change to ru');
-            $('#lang').text('Русский');
-            $.getJSON('lang/ru.json', translate);
-
-        });
     }
 
     /**
      * Restart game with new grid that set in init()
      */
     $('.restart-button').click(function () {
+        var level = getCurrent_level();
+        switch (level) {
+            case 1:
+                init(6, 6);
+                break;
+            case 2:
+                init(7, 7);
+                break;
+            case 3:
+                init(8, 8);
 
+                break;
+            case 4:
+                init(9, 9);
+                break;
+            case 5:
+                init(10, 10);
+                break;
+            default:
+                init(5, 5);
+        }
+        clear_grid();
+
+    });
+
+    $('.next-level-button').click(function () {
         init_level();
+        clear_grid();
+    });
+    function clear_grid() {
         var $cells = $('.grid-cell');
         $cells.each(function () {
             $(this).fadeOut(900, function () {
@@ -227,16 +246,9 @@ $(document).ready(function () {
                     $(this).stop().fadeIn(900);
                 });
             })
-
-            $i = 0;
-
-            firstStepFlag = 1;
-
         });
-        $('#fade , #game_message_win, #game_message_lose').fadeOut(900);
-
-
-    });
+        $('#fade , #game_message_win, #game_message_lose, #game_message_next_level').fadeOut(900);
+    }
 
     function setCoockie(level) {
         var value = $.urlParam('user_id') + level;
@@ -252,7 +264,7 @@ $(document).ready(function () {
                 VK.callMethod("resizeWindow", 625, 630);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote1"></p><p tkey="quote1author"></p> </blockquote>');
+                    $('.game-explanation').append('<blockquote><p tkey="quote1"></p> </blockquote>');
                     select_ln();
                     $('.game-explanation').fadeIn(900);
                 });
@@ -262,17 +274,17 @@ $(document).ready(function () {
                 VK.callMethod("resizeWindow", 625, 675);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote2"></p><p tkey="quote1author"></p> </blockquote>');
+                    $('.game-explanation').append('<blockquote><p tkey="quote2"></p> </blockquote>');
                     select_ln();
                     $('.game-explanation').fadeIn(900);
                 });
                 break;
             case 3:
                 init(8, 8);
-                VK.callMethod("resizeWindow", 625, 720);
+                VK.callMethod("resizeWindow", 625, 750);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote3"></p><p tkey="quote1author"></p> </blockquote>');
+                    $('.game-explanation').append('<blockquote><p tkey="quote3"></p> </blockquote>');
                     select_ln();
                     $('.game-explanation').fadeIn(900);
                 });
@@ -282,7 +294,7 @@ $(document).ready(function () {
                 VK.callMethod("resizeWindow", 625, 765);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote4"></p><p tkey="quote1author"></p> </blockquote>');
+                    $('.game-explanation').append('<blockquote><p tkey="quote4"></p> </blockquote>');
                     select_ln();
                     $('.game-explanation').fadeIn(900);
                 });
@@ -292,7 +304,7 @@ $(document).ready(function () {
                 VK.callMethod("resizeWindow", 625, 810);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
-                    $('.game-explanation').append('<blockquote><p tkey="quote5"></p><p tkey="quote1author"></p> </blockquote>');
+                    $('.game-explanation').append('<blockquote><p tkey="quote5"></p> </blockquote>');
                     select_ln();
                     $('.game-explanation').fadeIn(900);
                 });
@@ -302,7 +314,7 @@ $(document).ready(function () {
                 VK.callMethod("resizeWindow", 625, 600);
                 $('.game-explanation').fadeOut(900, function () {
                     $('blockquote').remove();
-                    $('.game-explanation').append(' <blockquote><p tkey="how"></p><p tkey="rules"></p> </blockquote>');
+                    $('.game-explanation').append(' <blockquote><p tkey="how"></p><p tkey="rules"></p></blockquote>');
                     select_ln();
                     $('.game-explanation').fadeIn(900);
                 });
