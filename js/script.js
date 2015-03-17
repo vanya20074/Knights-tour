@@ -10,6 +10,7 @@ $(document).ready(function () {
         console.log('failed vk init')
     }, '5.29');
 
+
     if (($.cookie($.urlParam('user_id').toString())) == null) {
         console.log('null')
         $.cookie($.urlParam('user_id'), '0');
