@@ -10,8 +10,8 @@ $(document).ready(function () {
         console.log('failed vk init')
     }, '5.29');
 
-
-    if (($.cookie('level').toString()) == null) {
+console.log(($.cookie('level')) == null)
+    if (($.cookie('level')) == null) {
         console.log('null')
         $.cookie('level', '0');
         $.cookie('select', '0');
