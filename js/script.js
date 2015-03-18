@@ -11,20 +11,20 @@ $(document).ready(function () {
     }, '5.29');
 
 
-    if (($.cookie($.urlParam('user_id').toString())) == null) {
+    if (($.cookie('level').toString()) == null) {
         console.log('null')
-        $.cookie($.urlParam('user_id'), '0');
+        $.cookie('level', '0');
         $.cookie('select', '0');
 
     }
 
     $('.level-cell').each(function () {
          $(this).addClass('lock');
-         if ($(this).index() <= $.cookie($.urlParam('user_id')).toString()) $(this).removeClass('lock');
+         if ($(this).index() <= $.cookie('level').toString()) $(this).removeClass('lock');
     })
 
 //    $('level-cell').removeClass('current_lvl');
-//    $('level-cell:eq(' + $.cookie($.urlParam('user_id'))+ ')').addClass('current_lvl');
+//    $('level-cell:eq(' + $.cookie('level')+ ')').addClass('current_lvl');
 
     function init(rows, columns) {
 
@@ -152,7 +152,7 @@ $(document).ready(function () {
                             //console.log(current_level + ' ' + getCurrent_level());
 
                             current_level++;
-                            $.cookie($.urlParam('user_id'), current_level);
+                            $.cookie('level', current_level);
                             $.cookie('select', current_level);
                             console.log(current_level + ' ----')
                             $('.level-cell:eq(' + current_level + ')').removeClass('lock');
@@ -286,9 +286,10 @@ function clear_grid() {
 }
 
 function setCoockie(level) {
-    //    var value = $.urlParam('user_id') + level;
+    //    var value = 'level' + level;
     //   var md5 = $.md5(value);
-    $.cookie($.urlParam('user_id'), level);
+    //$.cookie('level', level);
+    $.cookie('level', level);
 }
 
 /**
