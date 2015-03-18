@@ -14,4 +14,4 @@ Created with using styles from [2048](https://github.com/gabrielecirulli/2048).
 
 
 ## License
-A knight's tou is licensed under the [MIT license.](https://github.com/vanya20074/Knights-tour/LICENSE.txt)
+A knight's tou is licensed under the [MIT license.](https://github.com/vanya20074/Knights-tour/blob/master/LICENSE.txt)
