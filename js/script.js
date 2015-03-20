@@ -231,7 +231,7 @@ $(document).ready(function () {
             });
 
             $('#fade').click(function () {
-                $('#fade , #game_message_win, #game_message_losem, #game_message_next_level').fadeOut(900)
+                $('#fade , #game_message_win, #game_message_lose, #game_message_next_level').fadeOut(900)
                 return false;
             });
         }
